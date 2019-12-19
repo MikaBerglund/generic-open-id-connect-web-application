@@ -48,7 +48,10 @@ namespace OidcWeb
                 .AddOpenIdConnect(options =>
                 {
                     this.Configuration.Bind("oidc", options);
-                    
+
+                    options.TokenValidationParameters.NameClaimType = "name";
+                    options.TokenValidationParameters.RoleClaimType = "role";
+
                     // Here you can set other options if you want to hard-code something instead of having it configurable.
 
                     options.Events.OnTicketReceived = async (context) =>
